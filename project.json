@@ -1,0 +1,39 @@
+{
+  "project": {
+    "name": "SerBot PrimeX - AIoT Learning Platform",
+    "description": "A responsive and animated web-based interface showcasing the SerBot PrimeX robot for educational use in AI and IoT. Designed to support project-based learning with real-time capabilities in vision, voice, and sensor integration.",
+    "version": "1.0.0",
+    "author": {
+      "name": "Akash Gupta",
+      "github": "https://github.com/saysky2",
+      "linkedin": "https://www.linkedin.com/in/saysky2"
+    },
+    "files": [
+      "index.html",
+      "serbot_image.png",
+      "Khwaja_Moinuddin_Chishti_Language_University_logo.png",
+      "README.md",
+      "project.json"
+    ],
+    "features": [
+      "Edge AI robotics system overview",
+      "Touch display, camera, LiDAR, ultrasonic sensor support",
+      "Voice and vision AI capabilities",
+      "Curriculum-integrated hands-on modules",
+      "Clean animated layout with responsive design"
+    ],
+    "technologies": [
+      "HTML5",
+      "CSS3",
+      "JavaScript"
+    ],
+    "hosting": {
+      "recommended": [
+        "GitHub Pages",
+        "Netlify",
+        "Vercel"
+      ]
+    },
+    "license": "MIT"
+  }
+}
