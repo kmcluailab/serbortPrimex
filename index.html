@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,60 +7,147 @@
   <title>SerBot PrimeX - AIoT Learning Platform</title>
   <link rel="icon" type="image/png" href="Khwaja_Moinuddin_Chishti_Language_University_logo.png" />
   <style>
+    :root {
+      --bg-color: #f5f7fa;
+      --text-color: #333;
+      --header-bg: #283593;
+      --main-bg: #fff;
+      --accent-color: #1a237e;
+      --border-color: #ddd;
+      --shadow-color: rgba(0,0,0,0.2);
+    }
+
+    [data-theme="dark"] {
+      --bg-color: #1a1a1a;
+      --text-color: #e0e0e0;
+      --header-bg: #1e1e2e;
+      --main-bg: #2d2d2d;
+      --accent-color: #64b5f6;
+      --border-color: #444;
+      --shadow-color: rgba(0,0,0,0.5);
+    }
+
     body {
       font-family: 'Segoe UI', sans-serif;
-      background-color: #f5f7fa;
+      background-color: var(--bg-color);
       margin: 0;
-      color: #333;
+      color: var(--text-color);
+      transition: all 0.3s ease;
     }
+
+    .controls {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      display: flex;
+      gap: 10px;
+    }
+
+    .control-btn {
+      background-color: var(--header-bg);
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+
+    .control-btn:hover {
+      opacity: 0.8;
+    }
+
+    .language-select {
+      background-color: var(--header-bg);
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
     header {
-      background-color: #283593;
+      background-color: var(--header-bg);
       color: white;
       padding: 20px 20px 20px 100px;
       text-align: center;
       position: relative;
       animation: slideInDown 1s ease;
     }
+
     header img.logo {
       position: absolute;
       top: 10px;
       left: 20px;
       height: 80px;
     }
+
     main {
       max-width: 1200px;
       margin: auto;
       padding: 2em;
-      background-color: #fff;
+      background-color: var(--main-bg);
       animation: fadeIn 1.5s ease-in;
+      margin-bottom: 100px;
     }
+
     h2 {
-      color: #1a237e;
+      color: var(--accent-color);
       margin-top: 40px;
     }
+
     ul {
       padding-left: 20px;
     }
+
     li {
       margin-bottom: 10px;
     }
+
     .image-animated {
       display: block;
       max-width: 90%;
       margin: 30px auto;
       border-radius: 10px;
-      border: 4px solid #ddd;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      border: 4px solid var(--border-color);
+      box-shadow: 0 4px 12px var(--shadow-color);
       animation: fadeInImage 2s ease-in-out;
     }
+
+    .lang-hidden {
+      display: none;
+    }
+
+    footer {
+      background-color: var(--header-bg);
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+    }
+
+    footer a {
+      color: #64b5f6;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
     @keyframes fadeInImage {
       from { opacity: 0; transform: scale(0.95); }
       to { opacity: 1; transform: scale(1); }
     }
+
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
     }
+
     @keyframes slideInDown {
       from { transform: translateY(-100%); opacity: 0; }
       to { transform: translateY(0); opacity: 1; }
@@ -67,85 +155,279 @@
   </style>
 </head>
 <body>
+  <div class="controls">
+    <button class="control-btn" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+    <select class="language-select" onchange="changeLanguage(this.value)">
+      <option value="en">English</option>
+      <option value="hi">हिंदी</option>
+      <option value="ur">اردو</option>
+    </select>
+  </div>
+
   <header>
     <img src="Khwaja_Moinuddin_Chishti_Language_University_logo.png" alt="University Logo" class="logo">
-    <h1>SerBot PrimeX</h1>
-    <p>Empowering Next-Gen Robotics and AI Learning</p>
+    <h1 data-lang="en">SerBot PrimeX</h1>
+    <h1 data-lang="hi" class="lang-hidden">सर्बॉट प्राइमएक्स</h1>
+    <h1 data-lang="ur" class="lang-hidden">سربوٹ پرائم ایکس</h1>
+    
+    <p data-lang="en">Empowering Next-Gen Robotics and AI Learning</p>
+    <p data-lang="hi" class="lang-hidden">अगली पीढ़ी की रोबोटिक्स और AI शिक्षा को सशक्त बनाना</p>
+    <p data-lang="ur" class="lang-hidden">اگلی نسل کی روبوٹکس اور AI سیکھنے کو بااختیار بنانا</p>
   </header>
+
   <main>
     <img src="Serbot.jpg" alt="SerBot PrimeX" class="image-animated">
 
     <section>
-      <h2>Introduction to AIoT in Education</h2>
-      <p>AIoT is transforming how students learn and how industries innovate. SerBot PrimeX enables this transformation with practical, AI-enabled robotics education.</p>
+      <h2 data-lang="en">Introduction to AIoT in Education</h2>
+      <h2 data-lang="hi" class="lang-hidden">शिक्षा में AIoT का परिचय</h2>
+      <h2 data-lang="ur" class="lang-hidden">تعلیم میں AIoT کا تعارف</h2>
+      
+      <p data-lang="en">AIoT is transforming how students learn and how industries innovate. SerBot PrimeX enables this transformation with practical, AI-enabled robotics education.</p>
+      <p data-lang="hi" class="lang-hidden">AIoT छात्रों के सीखने के तरीके और उद्योगों के नवाचार के तरीके को बदल रहा है। सर्बॉट प्राइमएक्स व्यावहारिक, AI-सक्षम रोबोटिक्स शिक्षा के साथ इस परिवर्तन को सक्षम बनाता है।</p>
+      <p data-lang="ur" class="lang-hidden">AIoT طلباء کے سیکھنے کے انداز اور صنعتوں کی اختراع کے طریقے کو تبدیل کر رہا ہے۔ سربوٹ پرائم ایکس عملی، AI-فعال روبوٹکس تعلیم کے ساتھ اس تبدیلی کو ممکن بناتا ہے۔</p>
     </section>
 
     <section>
-      <h2>Platform Highlights</h2>
-      <ul>
+      <h2 data-lang="en">Platform Highlights</h2>
+      <h2 data-lang="hi" class="lang-hidden">प्लेटफॉर्म हाइलाइट्स</h2>
+      <h2 data-lang="ur" class="lang-hidden">پلیٹ فارم کی خصوصیات</h2>
+      
+      <ul data-lang="en">
         <li>Comprehensive learning and research platform</li>
         <li>Edge AI, robotics, IoT, voice & vision capabilities</li>
         <li>Hands-on mastery of modern AIoT systems</li>
         <li>Project-based STEM learning approach</li>
       </ul>
+      <ul data-lang="hi" class="lang-hidden">
+        <li>व्यापक शिक्षा और अनुसंधान प्लेटफॉर्म</li>
+        <li>एज AI, रोबोटिक्स, IoT, वॉयस और विजन क्षमताएं</li>
+        <li>आधुनिक AIoT सिस्टम की व्यावहारिक महारत</li>
+        <li>प्रोजेक्ट-आधारित STEM शिक्षा दृष्टिकोण</li>
+      </ul>
+      <ul data-lang="ur" class="lang-hidden">
+        <li>جامع تعلیمی اور تحقیقی پلیٹ فارم</li>
+        <li>ایج AI، روبوٹکس، IoT، آواز اور بصری صلاحیات</li>
+        <li>جدید AIoT سسٹم کی عملی مہارت</li>
+        <li>پروجیکٹ پر مبنی STEM تعلیمی نقطہ نظر</li>
+      </ul>
     </section>
 
     <section>
-      <h2>SerBot PrimeX Hardware Overview</h2>
-      <ul>
+      <h2 data-lang="en">SerBot PrimeX Hardware Overview</h2>
+      <h2 data-lang="hi" class="lang-hidden">सर्बॉट प्राइमएक्स हार्डवेयर अवलोकन</h2>
+      <h2 data-lang="ur" class="lang-hidden">سربوٹ پرائم ایکس ہارڈویئر کا جائزہ</h2>
+      
+      <ul data-lang="en">
         <li>Omni-wheel drive with 3-axis mobility</li>
         <li>Edge AI Supercomputer with up to 21 TOPS</li>
         <li>7" Touch Display (1280x720)</li>
         <li>8MP wide-angle camera (160° FOV)</li>
         <li>Ultrasonic, PSD, LiDAR, IoT sensor support</li>
       </ul>
-    </section>
-
-    <section>
-      <h2>Connectivity & Power</h2>
-      <ul>
-        <li>Gigabit Ethernet, Dual-band Wi-Fi, Bluetooth</li>
-        <li>High-capacity battery with continuous charging</li>
-        <li>Service discovery using mDNS/DNS-SD</li>
+      <ul data-lang="hi" class="lang-hidden">
+        <li>3-अक्ष गतिशीलता के साथ ओमनी-व्हील ड्राइव</li>
+        <li>21 TOPS तक का एज AI सुपरकंप्यूटर</li>
+        <li>7" टच डिस्प्ले (1280x720)</li>
+        <li>8MP वाइड-एंगल कैमरा (160° FOV)</li>
+        <li>अल्ट्रासोनिक, PSD, LiDAR, IoT सेंसर समर्थन</li>
+      </ul>
+      <ul data-lang="ur" class="lang-hidden">
+        <li>3-محور حرکت کے ساتھ اومنی وہیل ڈرائیو</li>
+        <li>21 TOPS تک کا ایج AI سپر کمپیوٹر</li>
+        <li>7" ٹچ ڈسپلے (1280x720)</li>
+        <li>8MP وائیڈ اینگل کیمرہ (160° FOV)</li>
+        <li>الٹراسونک، PSD، LiDAR، IoT سینسر کی سپورٹ</li>
       </ul>
     </section>
 
     <section>
-      <h2>Software Ecosystem</h2>
-      <ul>
+      <h2 data-lang="en">Connectivity & Power</h2>
+      <h2 data-lang="hi" class="lang-hidden">कनेक्टिविटी और पावर</h2>
+      <h2 data-lang="ur" class="lang-hidden">کنیکٹویٹی اور پاور</h2>
+      
+      <ul data-lang="en">
+        <li>Gigabit Ethernet, Dual-band Wi-Fi, Bluetooth</li>
+        <li>High-capacity battery with continuous charging</li>
+        <li>Service discovery using mDNS/DNS-SD</li>
+      </ul>
+      <ul data-lang="hi" class="lang-hidden">
+        <li>गीगाबिट ईथरनेट, डुअल-बैंड Wi-Fi, ब्लूटूथ</li>
+        <li>निरंतर चार्जिंग के साथ उच्च-क्षमता बैटरी</li>
+        <li>mDNS/DNS-SD का उपयोग करके सेवा खोज</li>
+      </ul>
+      <ul data-lang="ur" class="lang-hidden">
+        <li>گیگابٹ ایتھرنیٹ، ڈول بینڈ Wi-Fi، بلوٹوتھ</li>
+        <li>مسلسل چارجنگ کے ساتھ ہائی کیپیسٹی بیٹری</li>
+        <li>mDNS/DNS-SD استعمال کرتے ہوئے سروس کی تلاش</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 data-lang="en">Software Ecosystem</h2>
+      <h2 data-lang="hi" class="lang-hidden">सॉफ्टवेयर इकोसिस्टम</h2>
+      <h2 data-lang="ur" class="lang-hidden">سافٹ ویئر ایکو سسٹم</h2>
+      
+      <ul data-lang="en">
         <li>Soda OS and Pop Library (AIoT-optimized)</li>
         <li>Support for Python 3, C/C++ interpreters</li>
         <li>Web-based IDE, VS Code integration</li>
         <li>Compatible with TensorFlow, PyTorch, ONNX</li>
       </ul>
-    </section>
-
-    <section>
-      <h2>Advanced AI Capabilities</h2>
-      <ul>
-        <li>Voice Interaction (Speech-to-Text, Text-to-Speech)</li>
-        <li>Vision: Object detection, face & gesture recognition</li>
+      <ul data-lang="hi" class="lang-hidden">
+        <li>सोडा OS और पॉप लाइब्रेरी (AIoT-अनुकूलित)</li>
+        <li>Python 3, C/C++ इंटरप्रेटर के लिए समर्थन</li>
+        <li>वेब-आधारित IDE, VS Code एकीकरण</li>
+        <li>TensorFlow, PyTorch, ONNX के साथ संगत</li>
+      </ul>
+      <ul data-lang="ur" class="lang-hidden">
+        <li>سوڈا OS اور پاپ لائبریری (AIoT-بہتر)</li>
+        <li>Python 3، C/C++ انٹرپریٹرز کی سپورٹ</li>
+        <li>ویب پر مبنی IDE، VS Code انٹیگریشن</li>
+        <li>TensorFlow، PyTorch، ONNX کے ساتھ مطابقت</li>
       </ul>
     </section>
 
     <section>
-      <h2>Educational Applications</h2>
-      <ul>
-        <li>Robotics labs and innovation projects</li>
-        <li>Hands-on AIoT workshops</li>
-        <li>Curriculum integration in engineering colleges</li>
+      <h2 data-lang="en">Advanced AI Capabilities</h2>
+      <h2 data-lang="hi" class="lang-hidden">उन्नत AI क्षमताएं</h2>
+      <h2 data-lang="ur" class="lang-hidden">ایڈوانس AI صلاحیات</h2>
+      
+      <ul data-lang="en">
+        <li>Real-time object detection and recognition</li>
+        <li>Natural language processing and voice commands</li>
+        <li>Machine learning model deployment</li>
+        <li>Computer vision and image processing</li>
       </ul>
+      <ul data-lang="hi" class="lang-hidden">
+        <li>रीयल-टाइम ऑब्जेक्ट डिटेक्शन और पहचान</li>
+        <li>प्राकृतिक भाषा प्रसंस्करण और वॉयस कमांड</li>
+        <li>मशीन लर्निंग मॉडल परिनियोजन</li>
+        <li>कंप्यूटर विजन और इमेज प्रोसेसिंग</li>
+      </ul>
+      <ul data-lang="ur" class="lang-hidden">
+        <li>ریئل ٹائم آبجیکٹ ڈیٹیکشن اور شناخت</li>
+        <li>قدرتی زبان کی پروسیسنگ اور وائس کمانڈز</li>
+        <li>مشین لرننگ ماڈل کی تعیناتی</li>
+        <li>کمپیوٹر ویژن اور امیج پروسیسنگ</li>
+      </ul>
+
     </section>
 
     <section>
-      <h2>Real-World Use Cases</h2>
-      <ul>
-        <li>Smart navigation with obstacle avoidance</li>
-        <li>Voice-controlled assistant with AI responses</li>
-        <li>Object recognition and tracking</li>
-        <li>Environmental sensing via IoT integration</li>
-      </ul>
-    </section>
+  <h2 data-lang="en">Educational Applications</h2>
+  <h2 data-lang="hi" class="lang-hidden">शैक्षिक अनुप्रयोग</h2>
+  <h2 data-lang="ur" class="lang-hidden">تعلیمی اطلاقات</h2>
+
+  <ul data-lang="en">
+    <li>Robotics labs and innovation projects</li>
+    <li>Hands-on AIoT workshops</li>
+    <li>Curriculum integration in engineering colleges</li>
+  </ul>
+  <ul data-lang="hi" class="lang-hidden">
+    <li>रोबोटिक्स प्रयोगशालाएं और नवाचार परियोजनाएं</li>
+    <li>व्यावहारिक AIoT कार्यशालाएं</li>
+    <li>इंजीनियरिंग कॉलेजों में पाठ्यक्रम एकीकरण</li>
+  </ul>
+  <ul data-lang="ur" class="lang-hidden">
+    <li>روبوٹکس لیبارٹریاں اور جدت کے منصوبے</li>
+    <li>عملی AIoT ورکشاپس</li>
+    <li>انجینئرنگ کالجوں میں نصاب کا انضمام</li>
+  </ul>
+</section>
+
+<section>
+  <h2 data-lang="en">Real-World Use Cases</h2>
+  <h2 data-lang="hi" class="lang-hidden">वास्तविक-विश्व उपयोग मामले</h2>
+  <h2 data-lang="ur" class="lang-hidden">حقیقی دنیا کے استعمال کی مثالیں</h2>
+
+  <ul data-lang="en">
+    <li>Smart navigation with obstacle avoidance</li>
+    <li>Voice-controlled assistant with AI responses</li>
+    <li>Object recognition and tracking</li>
+    <li>Environmental sensing via IoT integration</li>
+  </ul>
+  <ul data-lang="hi" class="lang-hidden">
+    <li>बाधा से बचाव के साथ स्मार्ट नेविगेशन</li>
+    <li>AI प्रतिक्रियाओं के साथ वॉयस-नियंत्रित सहायक</li>
+    <li>वस्तु पहचान और ट्रैकिंग</li>
+    <li>IoT एकीकरण के माध्यम से पर्यावरण संवेदन</li>
+  </ul>
+  <ul data-lang="ur" class="lang-hidden">
+    <li>رکاوٹ سے بچاؤ کے ساتھ سمارٹ نیویگیشن</li>
+    <li>AI جوابات کے ساتھ وائس کنٹرول اسسٹنٹ</li>
+    <li>آبجیکٹ کی شناخت اور ٹریکنگ</li>
+    <li>IoT انضمام کے ذریعے ماحولیاتی سینسنگ</li>
+  </ul>
+</section>
+
   </main>
+
+  <footer>
+    <p data-lang="en">
+      Developer: Akash Gupta | 
+      <a href="https://www.linkedin.com/in/saysky2" target="_blank">LinkedIn</a> | 
+      <a href="https://github.com/saysky2" target="_blank">GitHub</a>
+    </p>
+    <p data-lang="en">Under the Supervision of <strong>Dr. Shan E Fatima</strong></p>
+    <p data-lang="hi" class="lang-hidden">
+      डेवलपर: आकाश गुप्ता | 
+      <a href="https://www.linkedin.com/in/saysky2" target="_blank">LinkedIn</a> | 
+      <a href="https://github.com/saysky2" target="_blank">GitHub</a>
+    </p>
+    <p data-lang="hi" class="lang-hidden"><strong>डॉ. शान ई. फातिमा</strong> के पर्यवेक्षण में</p>
+    <p data-lang="ur" class="lang-hidden">
+      ڈیولپر: آکاش گپتا | 
+      <a href="https://www.linkedin.com/in/saysky2" target="_blank">LinkedIn</a> | 
+      <a href="https://github.com/saysky2" target="_blank">GitHub</a>
+    </p>
+    <p data-lang="ur" class="lang-hidden"><strong>ڈاکٹر شان ای فاطمہ</strong> کی نگرانی میں</p>
+  </footer>
+
+  <script>
+    function toggleDarkMode() {
+      const body = document.body;
+      const currentTheme = body.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
+      body.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      
+      const button = document.querySelector('.control-btn');
+      button.textContent = newTheme === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode';
+    }
+
+    function changeLanguage(lang) {
+      // Hide all language elements
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        el.classList.add('lang-hidden');
+      });
+      
+      // Show selected language elements
+      document.querySelectorAll(`[data-lang="${lang}"]`).forEach(el => {
+        el.classList.remove('lang-hidden');
+      });
+      
+      // Update HTML lang attribute
+      document.documentElement.lang = lang;
+      
+      // Save language preference
+      localStorage.setItem('language', lang);
+    }
+
+    // Load saved preferences
+    window.addEventListener('load', function() {
+      // Load saved theme
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      document.body.setAttribute('data-theme', savedTheme);
+      const button = document.querySelector('.control-btn');
+      button.textContent = savedTheme === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode';
+      
+      // Load saved language
+      const savedLanguage = localStorage.getItem('language') || 'en';
+      document.querySelector('.language-select').value = savedLanguage;
+      changeLanguage(savedLanguage);
+    });
+  </script>
 </body>
 </html>
